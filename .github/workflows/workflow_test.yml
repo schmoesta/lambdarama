@@ -1,0 +1,33 @@
+name: Run tests
+
+on:
+  workflow_call:
+    inputs:
+      python-version:
+        description: Python version to use
+        required: false
+        default: "3.10"
+        type: string
+      hatch-version:
+        description: Hatch version to use
+        required: false
+        default: "1.9"
+        type: string
+
+jobs:
+  test:
+    name: Tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: hatch setup
+        uses: ./.github/actions/hatch_setup
+        with:
+          hatch-version: ${{ inputs.hatch-version }}
+          python-version: ${{ inputs.python-version }}
+
+      - name: Test
+        run: hatch run dev:test

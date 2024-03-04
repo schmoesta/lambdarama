@@ -1,0 +1,25 @@
+version: 2
+updates:
+  - package-ecosystem: "pip"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "sunday"
+    groups:
+      production:
+        dependency-type: production
+
+  - package-ecosystem: "pip"
+    directory: "/requirements/"
+    schedule:
+      interval: "weekly"
+      day: "sunday"
+    groups:
+      development:
+        dependency-type: development
+
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "sunday"

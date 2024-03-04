@@ -1,0 +1,40 @@
+name: Lint
+
+on:
+  workflow_call:
+    inputs:
+      python-version:
+        description: Python version to use
+        required: false
+        default: "3.10"
+        type: string
+      hatch-version:
+        description: Hatch version to use
+        required: false
+        default: "1.9"
+        type: string
+
+jobs:
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: hatch setup
+        uses: ./.github/actions/hatch_setup
+        with:
+          hatch-version: ${{ inputs.hatch-version }}
+          python-version: ${{ inputs.python-version }}
+
+      - name: Lint style
+        run: hatch run dev:lint-style
+
+      - name: Lint types
+        run: hatch run dev:lint-types
+
+      - name: Lint format
+        run: hatch run dev:lint-format
+

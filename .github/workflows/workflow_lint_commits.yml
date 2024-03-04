@@ -1,0 +1,54 @@
+name: Lint commits
+
+on:
+  workflow_call:
+    inputs:
+      python-version:
+        description: Python version to use
+        required: false
+        default: "3.10"
+        type: string
+      hatch-version:
+        description: Hatch version to use
+        required: false
+        default: "1.9"
+        type: string
+      from:
+        description: |
+          The start SHA key for the validation range. If not supplied, checks
+          only the last commit.
+        required: false
+        type: string
+      to:
+        description: |
+          The end SHA key for the validation range. If not supplied, checks
+          only the last commit.
+        required: false
+        type: string
+
+jobs:
+  gitlint:
+    name: gitlint
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Install hatch
+        uses: ./.github/actions/hatch_setup
+        with:
+          hatch-version: ${{ inputs.hatch-version }}
+          python-version: ${{ inputs.python-version }}
+
+      - name: Lint commit range
+        if: inputs.from!='' && inputs.to!=''
+        run: |
+          hatch run dev:gitlint --commits ${{ inputs.from }}..${{ inputs.to }}
+
+      - name: Lint last commit
+        if: inputs.from=='' || inputs.to==''
+        run: |
+          hatch run dev:gitlint

@@ -1,0 +1,32 @@
+name: hatch setup
+description: Set up python, hatch and install dependencies
+inputs:
+  hatch-version:
+    description: Python version to use
+    required: true
+  python-version:
+    description: Hatch version to use
+    required: true
+runs:
+  using: "composite"
+  steps:
+    - name: Install hatch
+      run: pipx install hatch==${{ inputs.hatch-version }}
+      shell: bash
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ inputs.python-version }}
+        cache: "pip"
+        cache-dependency-path: |
+          ./requirements.txt
+          ./requirements/requirements-dev.txt
+
+    - name: Install dependencies
+      run: hatch env create
+      shell: bash
+    
+    - name: Install dev dependencies
+      run: hatch env create dev
+      shell: bash

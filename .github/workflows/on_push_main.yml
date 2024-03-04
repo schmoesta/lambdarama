@@ -1,0 +1,16 @@
+name: On push to main
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  lint-commits:
+    uses: ./.github/workflows/workflow_lint_commits.yml
+
+  lint:
+    uses: ./.github/workflows/workflow_lint.yml
+
+  test:
+    uses: ./.github/workflows/workflow_test.yml
