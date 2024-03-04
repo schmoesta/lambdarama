@@ -1,0 +1,109 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "lambdarama"
+dynamic = ["version"]
+description = ''
+readme = "README.md"
+requires-python = "~=3.10"
+license = "MIT"
+keywords = []
+authors = [
+  { name = "schmoesta", email = "goestavg@gmail.com" },
+]
+dependencies = [
+  "pydantic",
+  "pydantic-settings",
+  "fastapi",
+  "mangum"
+]
+
+
+[tool.hatch.version]
+path = "src/lambdarama/__about__.py"
+
+[tool.hatch.env]
+requires = [
+    "hatch-pip-compile"
+]
+
+[tool.hatch.envs.default]
+python = "3.10"
+type = "pip-compile"
+pip-compile-resolver = "uv"
+path = "./venv/default"
+
+[tool.hatch.envs.dev]
+dependencies = [
+  "coverage[toml]>=6.5",
+  "pytest",
+  "ruff",
+  "mypy>=1.0.0",
+  "commitizen",
+  "gitlint",
+  "uvicorn"
+]
+path = "./venv/dev"
+
+[tool.hatch.envs.dev.scripts]
+test = "pytest {args:tests}"
+test-cov = "coverage run -m pytest {args:tests}"
+lint-style = "ruff check ."
+lint-format = "ruff format --check ."
+lint-types = "mypy --install-types --non-interactive {args:src/lambdarama tests}"
+lint-commits = "gitlint"
+lint-all = [
+  "lint-style",
+  "lint-format",
+  "lint-types",
+  "lint-commits"
+]
+format = "ruff check . --fix && ruff format ."
+serve = "uvicorn src.lambdarama.app:app --reload"
+
+cov-report = [
+  "- coverage combine",
+  "coverage report",
+]
+cov = [
+  "test-cov",
+  "cov-report",
+]
+
+
+[tool.coverage.run]
+source_pkgs = ["lambdarama", "tests"]
+branch = true
+parallel = true
+omit = [
+  "src/lambdarama/__about__.py",
+]
+
+[tool.coverage.paths]
+lambdarama = ["src/lambdarama", "*/lambdarama/src/lambdarama"]
+tests = ["tests", "*/lambdarama/tests"]
+
+[tool.coverage.report]
+exclude_lines = [
+  "no cov",
+  "if __name__ == .__main__.:",
+  "if TYPE_CHECKING:",
+]
+
+[tool.ruff.lint]
+select = [
+    # pycodestyle
+    "E",
+    # Pyflakes
+    "F",
+    # pyupgrade
+    "UP",
+    # flake8-bugbear
+    "B",
+    # flake8-simplify
+    "SIM",
+    # isort
+    "I",
+]
