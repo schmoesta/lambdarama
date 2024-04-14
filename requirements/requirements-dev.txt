@@ -112,5 +112,5 @@ typing-extensions==4.11.0
 uvicorn==0.27.1
 wcwidth==0.2.13
     # via prompt-toolkit
-zipp==3.17.0
+zipp==3.18.1
     # via importlib-metadata
