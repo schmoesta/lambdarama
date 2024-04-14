@@ -19,6 +19,7 @@ class Config(BaseSettings):
         "DEBUG",
         "NOTSET",
     ] = Field("INFO")
+    build: str | None = Field(None)
 
 
 def get_config() -> Config:
