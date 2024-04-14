@@ -41,11 +41,43 @@ This project provides two [environments](https://hatch.pypa.io/1.9/environment/)
 
 ## 🗂️ Project Structure
 
-todo: explain project structure
+The project is organized the following way:
+
+```
+.
+├── CONTRIBUTING.md
+│     Instructions for contributing
+├── Dockerfile
+│     Dockerfile for the Lambda image
+├── LICENSE.txt
+│     License information
+├── README.md
+│      This readme
+├── pyproject.toml
+│     Project configuration
+├── requirements
+│   └── requirements-dev.txt
+│         Dev requirements
+├── requirements.txt
+│     Production requirements
+├── src
+│   └── lambdarama
+│       ├── __about__.py
+│       │     Name, version and description
+│       ├── __init__.py
+│       ├── app.py
+│       │     The actual FastAPI application
+│       ├── config.py
+│       │     Runtime configuration
+│       └── handler.py
+│             Mangum ASGI handler
+└── tests
+      Tests
+```
 
 ### 📜 Scripts
 
-There are a number of [scripts]() available to perform common develpment tasks. They are defined for the `dev` environment and can be invoked by running: `hatch run dev:<name of script>`, e.g. `hatch run dev:lint`.
+There are a number of scripts available to perform common develpment tasks. They are defined for the `dev` environment and can be invoked by running: `hatch run dev:<name of script>`, e.g. `hatch run dev:lint`.
 
 | Script                       | Description                                   |
 | ---------------------------- | --------------------------------------------- |
