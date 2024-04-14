@@ -46,7 +46,7 @@ h11==0.14.0
     # via uvicorn
 idna==3.7
     # via anyio
-importlib-metadata==7.0.1
+importlib-metadata==7.1.0
     # via commitizen
 iniconfig==2.0.0
     # via pytest
