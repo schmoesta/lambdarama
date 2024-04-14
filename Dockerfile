@@ -1,12 +1,15 @@
 ARG PYTHON_VERSION=3.10
+ARG HATCH_VERSION=1.9
 
 FROM public.ecr.aws/lambda/python:${PYTHON_VERSION} AS base
 
 FROM base AS builder
+ARG PYTHON_VERSION
+ARG HATCH_VERSION
 
 WORKDIR /build
 
-RUN pip3 install hatch
+RUN pip3 install hatch~=${HATCH_VERSION}
 
 COPY . /build
 
