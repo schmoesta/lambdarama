@@ -83,7 +83,7 @@ pyyaml==6.0.1
 questionary==2.0.1
     # via commitizen
 ruff==0.3.0
-sh==1.14.3
+sh==2.0.6
     # via gitlint-core
 six==1.16.0
     # via python-dateutil
