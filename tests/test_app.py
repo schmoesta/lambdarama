@@ -5,11 +5,10 @@
 from typing import Any
 
 from fastapi.testclient import TestClient
-
-from src.lambdarama.__about__ import __description__ as app_description
-from src.lambdarama.__about__ import __name__ as app_name
-from src.lambdarama.__about__ import __version__ as app_version
-from src.lambdarama.app import ApiInfo, app
+from lambdarama.__about__ import __description__ as app_description
+from lambdarama.__about__ import __name__ as app_name
+from lambdarama.__about__ import __version__ as app_version
+from lambdarama.app import ApiInfo, app
 
 client = TestClient(app)
 

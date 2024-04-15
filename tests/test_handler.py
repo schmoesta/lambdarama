@@ -6,14 +6,13 @@ from json import loads
 from typing import Any
 from unittest.mock import MagicMock
 
+from lambdarama.__about__ import __description__ as app_description
+from lambdarama.__about__ import __name__ as app_name
+from lambdarama.__about__ import __version__ as app_version
+from lambdarama.app import ApiInfo
+from lambdarama.handler import handler
 from mangum.types import LambdaContext, LambdaEvent
 from pytest import fixture
-
-from src.lambdarama.__about__ import __description__ as app_description
-from src.lambdarama.__about__ import __name__ as app_name
-from src.lambdarama.__about__ import __version__ as app_version
-from src.lambdarama.app import ApiInfo
-from src.lambdarama.handler import handler
 
 
 @fixture
