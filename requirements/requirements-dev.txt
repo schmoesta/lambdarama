@@ -41,11 +41,11 @@ commitizen==3.16.0
 coverage==7.4.3
 decli==0.6.1
     # via commitizen
-exceptiongroup==1.2.0
+exceptiongroup==1.2.1
     # via
     #   anyio
     #   pytest
-fastapi==0.110.1
+fastapi==0.110.2
 gitlint==0.19.1
 gitlint-core==0.19.1
     # via gitlint
