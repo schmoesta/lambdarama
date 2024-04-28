@@ -125,7 +125,7 @@ typing-extensions==4.11.0
     #   pydantic
     #   pydantic-core
     #   uvicorn
-uvicorn==0.27.1
+uvicorn==0.29.0
 wcwidth==0.2.13
     # via prompt-toolkit
 zipp==3.18.1
