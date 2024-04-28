@@ -80,11 +80,11 @@ pluggy==1.5.0
     # via pytest
 prompt-toolkit==3.0.36
     # via questionary
-pydantic==2.7.0
+pydantic==2.7.1
     # via
     #   fastapi
     #   pydantic-settings
-pydantic-core==2.18.1
+pydantic-core==2.18.2
     # via pydantic
 pydantic-settings==2.2.1
 pytest==8.1.0
