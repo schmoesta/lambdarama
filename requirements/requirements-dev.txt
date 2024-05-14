@@ -87,7 +87,7 @@ pydantic==2.7.1
 pydantic-core==2.18.2
     # via pydantic
 pydantic-settings==2.2.1
-pytest==8.1.0
+pytest==8.2.0
 python-dateutil==2.9.0.post0
     # via arrow
 python-dotenv==1.0.1
