@@ -96,7 +96,7 @@ pyyaml==6.0.1
     # via commitizen
 questionary==2.0.1
     # via commitizen
-ruff==0.4.4
+ruff==0.5.0
 sh==1.14.3
     # via gitlint-core
 six==1.16.0
