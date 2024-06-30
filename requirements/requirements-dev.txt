@@ -21,7 +21,7 @@ anyio==4.3.0
     # via
     #   httpx
     #   starlette
-argcomplete==3.2.2
+argcomplete==3.4.0
     # via commitizen
 arrow==1.2.3
     # via gitlint-core
