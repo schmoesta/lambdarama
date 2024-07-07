@@ -91,6 +91,17 @@ There are a number of scripts available to perform common develpment tasks. They
 | `hatch run dev:cov`          | Get `coverage` report                         |
 | `hatch run dev:serve`        | Start hot reloading dev server with `uvicorn` |
 
+### 🐙 CI with Github Actions
+
+This project has Github Actions set up to build and push your Lambda function to ECR. If you want to fork the project to use it in the same way, have a look at these prerequisites. You need:
+
+1. an ECR repository to push the images to. The workflow is set up to push to a repo that has the same name as the Github repo. You may however pass any other name to the [workflow](./.github/workflows/workflow_push_to_ecr.yml). Just add it as an optional input where the workflow is called.
+2. an IAM role that Github Actions may assume via OIDC. Follow the [official documentation on Github](https://docs.github.com/en/actions/deployment/security-hardening-your-deployments/configuring-openid-connect-in-amazon-web-services) for how to set this up. Additionally the IAM role needs permission to push images to the ECR repository.
+3. a couple of secrets set in your newly forked Github project:
+   - `AWS_ACCOUNT_ID`: your AWS account ID.
+   - `AWS_REGION`: the AWS region where your ECR repository is deployed.
+   - `AWS_IAM_ROLE`: the IAM role to assume for pushing the image to ECR.
+
 ## 🫶 Contributing
 
 Please refer to the [CONTRIBUTING.md](./CONTRIBUTING.md) document to see how to contribute to this project.

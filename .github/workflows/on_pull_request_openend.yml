@@ -1,5 +1,9 @@
 name: On PR
 
+permissions:
+  id-token: write
+  contents: read
+
 on:
   pull_request:
     types: [opened, synchronize]
@@ -17,3 +21,16 @@ jobs:
   test:
     uses: ./.github/workflows/workflow_test.yml
 
+  push:
+    if: ${{ github.actor != 'dependabot[bot]' }}
+    needs:
+      - lint-commits
+      - lint
+      - test
+    uses: ./.github/workflows/workflow_push_to_ecr.yml
+    with:
+      tags: pr-${{ github.event.number }}
+    secrets:
+      aws_account_id: ${{ secrets.AWS_ACCOUNT_ID }}
+      iam_role: ${{ secrets.AWS_IAM_ROLE }}
+      aws_region: ${{ secrets.AWS_REGION }}
