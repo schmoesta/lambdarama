@@ -41,7 +41,6 @@ dependencies = [
   "pytest",
   "ruff",
   "mypy>=1.0.0",
-  "commitizen",
   "gitlint",
   "uvicorn",
   "httpx",

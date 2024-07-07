@@ -18,12 +18,7 @@ In this project, merge commits are not permitted, and contributors should be fam
 
 ### ✍️ Conventional Commits
 
-This project uses [conventional commit messages](https://www.conventionalcommits.org/en/v1.0.0/), ensuring a standardized format for describing changes. This consistency enhances collaboration, code review, and automated release processes, ultimately improving project maintainability and code quality. Commit messages are checked with [gitlint](https://github.com/jorisroovers/gitlint) as part of the CI pipeline. If you need help composing your messages, you may use the [commitizen]() CLI, which is bundled with the dev dependencies:
-
-```shell
-git add .
-hatch run dev:cz commit
-```
+This project uses [conventional commit messages](https://www.conventionalcommits.org/en/v1.0.0/), ensuring a standardized format for describing changes. This consistency enhances collaboration, code review, and automated release processes, ultimately improving project maintainability and code quality. Commit messages are checked with [gitlint](https://github.com/jorisroovers/gitlint) as part of the CI pipeline. If you need help composing your messages, you may consider using the [commitizen](https://commitizen-tools.github.io/commitizen/) CLI or a similar tool.
 
 ### 📄 Code Style, Linting, Types
 
