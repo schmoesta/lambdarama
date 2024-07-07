@@ -15,6 +15,8 @@ This project is a starter for creating serverless HTTP APIs on AWS Lambda. Here 
 - project management with [hatch](https://hatch.pypa.io/1.9/)
 - opinionated, strict and automatic enforcement of code style - less room to argue, more time to be productive
 
+**This is all still very much a work in progess. Please use at your own risk and expect things to break.**
+
 ---
 
 **Table of Contents**
@@ -26,7 +28,7 @@ This project is a starter for creating serverless HTTP APIs on AWS Lambda. Here 
 
 ## 🏗️ Setup
 
-This project is managed by [hatch](https://hatch.pypa.io/1.9/) - follow the instructions [here](https://hatch.pypa.io/1.9/install/) for setting up hatch on your machine. This project requires you to have Python >=3.8 available.
+This project is managed by [hatch](https://hatch.pypa.io/1.9/) - follow the instructions [here](https://hatch.pypa.io/1.9/install/) for setting up hatch on your machine.
 
 ```bash
 hatch run dev:test
@@ -101,6 +103,10 @@ This project has Github Actions set up to build and push your Lambda function to
    - `AWS_ACCOUNT_ID`: your AWS account ID.
    - `AWS_REGION`: the AWS region where your ECR repository is deployed.
    - `AWS_IAM_ROLE`: the IAM role to assume for pushing the image to ECR.
+
+### 🙅‍♂️ Known Limitations
+
+While the experience of using hatch has been very positive in most ways, it also comes with some drawbacks. There is still [no official support for lockfiles](https://hatch.pypa.io/1.12/meta/faq/#libraries-vs-applications), which is an important prerequisite for application development. The workaround for the moment is using the [pip-compile-plugin](https://github.com/juftin/hatch-pip-compile), which works well enough. Have a look at their documentation for how to use it, e.g. to [upgrade dependencies](https://github.com/juftin/hatch-pip-compile/blob/main/docs/upgrading.md).
 
 ## 🫶 Contributing
 
