@@ -78,7 +78,7 @@ idna==3.7
     #   anyio
     #   email-validator
     #   httpx
-importlib-metadata==7.2.1
+importlib-metadata==8.0.0
     # via commitizen
 iniconfig==2.0.0
     # via pytest
