@@ -1,5 +1,9 @@
 name: On push to main
 
+permissions:
+  id-token: write
+  contents: read
+
 on:
   push:
     branches:
@@ -14,3 +18,16 @@ jobs:
 
   test:
     uses: ./.github/workflows/workflow_test.yml
+
+  push:
+    needs:
+      - lint-commits
+      - lint
+      - test
+    uses: ./.github/workflows/workflow_push_to_ecr.yml
+    with:
+      tags: main
+    secrets:
+      aws_account_id: ${{ secrets.AWS_ACCOUNT_ID }}
+      iam_role: ${{ secrets.AWS_IAM_ROLE }}
+      aws_region: ${{ secrets.AWS_REGION }}
