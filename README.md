@@ -21,10 +21,10 @@ This project is a starter for creating serverless HTTP APIs on AWS Lambda. Here 
 
 **Table of Contents**
 
-- [🏗️ Setup](#🏗️-setup)
-- [🗂️ Project Structure](#🗂️-project-structure)
-- [🫶 Contributing](#🫶-contributing)
-- [⚖️ License](#⚖️-license)
+- [🏗️ Setup](#%EF%B8%8F-setup)
+- [🗂️ Project Structure](#%EF%B8%8F-project-structure)
+- [🫶 Contributing](#-contributing)
+- [⚖️ License](#%EF%B8%8F-license)
 
 ## 🏗️ Setup
 
@@ -40,6 +40,21 @@ This project provides two [environments](https://hatch.pypa.io/1.9/environment/)
 
 - `default`: This one has only the runtime dependencies of the lambda function.
 - `dev`: This one is used for local development, adding dev-dependencies like `ruff`, `mypy`, `pytest`, etc.
+
+### 🐙 CI with Github Actions
+
+This project has Github Actions set up to build and push your Lambda function to ECR. If you want to fork the project to use it in the same way, have a look at these prerequisites. You need:
+
+1. an ECR repository to push the images to. The workflow is set up to push to a repo that has the same name as the Github repo. You may however pass any other name to the [workflow](./.github/workflows/workflow_push_to_ecr.yml). Just add it as an optional input where the workflow is called.
+2. an IAM role that Github Actions may assume via OIDC. Follow the [official documentation on Github](https://docs.github.com/en/actions/deployment/security-hardening-your-deployments/configuring-openid-connect-in-amazon-web-services) for how to set this up. Additionally the IAM role needs permission to push images to the ECR repository.
+3. a couple of secrets set in your newly forked Github project:
+   - `AWS_ACCOUNT_ID`: your AWS account ID.
+   - `AWS_REGION`: the AWS region where your ECR repository is deployed.
+   - `AWS_IAM_ROLE`: the IAM role to assume for pushing the image to ECR.
+
+### 🙅‍♂️ Known Limitations
+
+While the experience of using hatch has been very positive in most ways, it also comes with some drawbacks. There is still [no official support for lockfiles](https://hatch.pypa.io/1.12/meta/faq/#libraries-vs-applications), which is an important prerequisite for application development. The workaround for the moment is using the [pip-compile-plugin](https://github.com/juftin/hatch-pip-compile), which works well enough. Have a look at their documentation for how to use it, e.g. to [upgrade dependencies](https://github.com/juftin/hatch-pip-compile/blob/main/docs/upgrading.md).
 
 ## 🗂️ Project Structure
 
@@ -92,21 +107,6 @@ There are a number of scripts available to perform common develpment tasks. They
 | `hatch run dev:test`         | Run tests with `pytest`                       |
 | `hatch run dev:cov`          | Get `coverage` report                         |
 | `hatch run dev:serve`        | Start hot reloading dev server with `uvicorn` |
-
-### 🐙 CI with Github Actions
-
-This project has Github Actions set up to build and push your Lambda function to ECR. If you want to fork the project to use it in the same way, have a look at these prerequisites. You need:
-
-1. an ECR repository to push the images to. The workflow is set up to push to a repo that has the same name as the Github repo. You may however pass any other name to the [workflow](./.github/workflows/workflow_push_to_ecr.yml). Just add it as an optional input where the workflow is called.
-2. an IAM role that Github Actions may assume via OIDC. Follow the [official documentation on Github](https://docs.github.com/en/actions/deployment/security-hardening-your-deployments/configuring-openid-connect-in-amazon-web-services) for how to set this up. Additionally the IAM role needs permission to push images to the ECR repository.
-3. a couple of secrets set in your newly forked Github project:
-   - `AWS_ACCOUNT_ID`: your AWS account ID.
-   - `AWS_REGION`: the AWS region where your ECR repository is deployed.
-   - `AWS_IAM_ROLE`: the IAM role to assume for pushing the image to ECR.
-
-### 🙅‍♂️ Known Limitations
-
-While the experience of using hatch has been very positive in most ways, it also comes with some drawbacks. There is still [no official support for lockfiles](https://hatch.pypa.io/1.12/meta/faq/#libraries-vs-applications), which is an important prerequisite for application development. The workaround for the moment is using the [pip-compile-plugin](https://github.com/juftin/hatch-pip-compile), which works well enough. Have a look at their documentation for how to use it, e.g. to [upgrade dependencies](https://github.com/juftin/hatch-pip-compile/blob/main/docs/upgrading.md).
 
 ## 🫶 Contributing
 
