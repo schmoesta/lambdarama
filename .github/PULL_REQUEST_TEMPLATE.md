@@ -1,5 +1,6 @@
 <!--
  Before you open the pull request please review the [CONTRIBUTING.md](/CONTRIBUTING.md) document.
+ The title of the PR should follow the same naming principles as the conventional commit messages.
  -->
 
 ### 🙋‍♀️ Why is the change important?
@@ -29,7 +30,7 @@
 <!-- Check all applicable fields or delete them if they aren't relevant. -->
 
 - [ ] **I have read and understood the [contributing guidelines](/CONTRIBUTING.md) guidelines.**
-- [ ] **The title of the pull request follows the pattern explained in the [branching paragraph](/CONTRIBUTING.md#🌳-branches).**
-- [ ] **I have cleaned up my commits and they follow the [conventional commits](/CONTRIBUTING.md#✍️-conventional-commits) convention.**
+- [ ] **I have cleaned up my commits and they follow the [conventional commits](/CONTRIBUTING.md#%EF%B8%8F-conventional-commits) convention.**
+- [ ] **The title of the pull request itself follows the [conventional commits](/CONTRIBUTING.md#%EF%B8%8F-conventional-commits) convention.**
 - [ ] **All additions and/or changes to function code are covered by tests.**
 - [ ] **The documentation has been updated where necessary.**
