@@ -100,7 +100,7 @@ pydantic-settings==2.3.4
     # via hatch.envs.dev
 pygments==2.18.0
     # via rich
-pytest==8.2.2
+pytest==8.3.1
     # via hatch.envs.dev
 python-dateutil==2.9.0.post0
     # via arrow
