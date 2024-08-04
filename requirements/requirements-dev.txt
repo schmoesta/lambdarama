@@ -114,7 +114,7 @@ pyyaml==6.0.1
     # via uvicorn
 rich==13.7.1
     # via typer
-ruff==0.5.1
+ruff==0.5.6
     # via hatch.envs.dev
 sh==1.14.3
     # via gitlint-core
